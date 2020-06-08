@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import { Route, Switch } from 'react-router-dom'
-import LandingPage from './containers/LandingPage';
+
 import Navbar from './components/Navbar';
 import ClanEvent from './containers/ClanEvent';
 import ClanRoster from './containers/ClanRoster';
 import Leaderboard from './containers/Leaderboard';
+import Home from './containers/Home';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/events" component={ClanEvent}/>
         <Route path="/leaderboards" component={Leaderboard}/>
         {/* <Route path="/help" render={(routerProps) => <Help urgency={5} {...routerProps}/>}/> */}
-        <Route path="/" component={LandingPage}/>
+        <Route path="/" component={Home}/>
       </Switch>
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
 
@@ -17,29 +17,38 @@ class Navbar extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Link to="/">Home</Link>
           <Menu.Item
+            as={Link} to="/"
             name='home'
             active={activeItem === 'home'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
+            as={Link} to="/events"
+            name='events'
+            active={activeItem === 'events'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='friends'
-            active={activeItem === 'friends'}
+            name='roster'
+            active={activeItem === 'roster'}
             onClick={this.handleItemClick}
+            as={Link} to="/roster"
           />
-          <Menu.Menu position='right'>
+          <Menu.Item
+            name='leaderboards'
+            active={activeItem === 'leaderboards'}
+            onClick={this.handleItemClick}
+            as={Link} to="/leaderboards"
+          />
+          {/* <Menu.Menu position='right'>
             <Menu.Item
+              as={NavLink} to="/roster"
               name='logout'
               active={activeItem === 'logout'}
               onClick={this.handleItemClick}
             />
-          </Menu.Menu>
+          </Menu.Menu> */}
         </Menu>
       </div>
     );
