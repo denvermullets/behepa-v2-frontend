@@ -3,12 +3,6 @@ import { Form, Input, Button, Dropdown, Checkbox } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
-const options = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
-]
-
 const eventOptions = [
   { key: 'nf', value: 'nf', text: 'Nightfall'},
   { key: 'gos', value: 'gos', text: 'Garden of Salvation'},
@@ -17,8 +11,6 @@ const eventOptions = [
   { key: 'sotp', value: 'sotp', text: 'Scourge of the Past'},
   
 ]
-
-
 
 class EventForm extends Component {
   
@@ -41,7 +33,7 @@ class EventForm extends Component {
     this.setState({ helper: !this.state.helper })
   }
 
-  onSubmit = (prop) => {
+  onSubmit = () => {
     this.props.addNewEvent(this.state)
     this.setState({
       event: '',
@@ -58,7 +50,6 @@ class EventForm extends Component {
     return (
       <>
       <br />
-       {/* <Form onSubmit={(e) => this.props.addNewEvent(this.state)}> */}
        <Form onSubmit={this.onSubmit}>
         <Form.Group widths='equal'>
           <Form.Field

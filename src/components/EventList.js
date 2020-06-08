@@ -20,12 +20,16 @@ class EventList extends Component {
     
     return (
       <>
-        <Table basic='very' celled collapsing>
+        <Table 
+          basic='very' celled collapsing
+          selectable={true}
+          sortable={true}
+        >
 
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>When</Table.HeaderCell>
               <Table.HeaderCell>Event</Table.HeaderCell>
+              <Table.HeaderCell>When</Table.HeaderCell>
               <Table.HeaderCell>Description</Table.HeaderCell>
               <Table.HeaderCell>Helper Needed</Table.HeaderCell>
             </Table.Row>
