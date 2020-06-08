@@ -41,13 +41,25 @@ class EventForm extends Component {
     this.setState({ helper: !this.state.helper })
   }
 
+  onSubmit = (prop) => {
+    this.props.addNewEvent(this.state)
+    this.setState({
+      event: '',
+      dateTime: new Date(),
+      helper: false,
+      description: '',
+     })
+
+  }
+
   render() {
     
 
     return (
       <>
       <br />
-       <Form onSubmit={(e) => this.props.addNewEvent(this.state)}>
+       {/* <Form onSubmit={(e) => this.props.addNewEvent(this.state)}> */}
+       <Form onSubmit={this.onSubmit}>
         <Form.Group widths='equal'>
           <Form.Field
             name="event"
@@ -58,6 +70,7 @@ class EventForm extends Component {
             selection
             options={eventOptions}
             onChange={this.onFormChange}
+            value={this.state.event}
           />
           <Form.Field
             name="description"
@@ -72,6 +85,7 @@ class EventForm extends Component {
           <label>When</label>
           <Form.Field
             control={DatePicker}
+            value={this.state.dateTime}
             // label="When"
             selected={this.state.dateTime}
             onChange={this.handleDateChange}
@@ -82,6 +96,7 @@ class EventForm extends Component {
           <Checkbox 
             toggle
             name="helper"
+            checked={this.state.helper}
             onChange={this.handleToggle}
           />
           <Button type='submit'>Submit</Button>

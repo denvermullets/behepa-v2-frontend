@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as moment from "moment" 
 import { Table } from 'semantic-ui-react'
+import Event from '../components/Event';
 
 
 class EventList extends Component {
@@ -19,7 +20,25 @@ class EventList extends Component {
     
     return (
       <>
-       Event_list
+        <Table basic='very' celled collapsing>
+
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>When</Table.HeaderCell>
+              <Table.HeaderCell>Event</Table.HeaderCell>
+              <Table.HeaderCell>Description</Table.HeaderCell>
+              <Table.HeaderCell>Helper Needed</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {this.props.allEvents.map(singleEvent => <Event 
+              key={singleEvent.id}
+              eventDetails={singleEvent}
+            />)}
+
+          </Table.Body>
+        </Table>
       </>
     );
   }
