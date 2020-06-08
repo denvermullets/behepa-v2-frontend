@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as moment from "moment" 
+import { Table } from 'semantic-ui-react'
 
 
 class EventList extends Component {

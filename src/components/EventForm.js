@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Form, Input, Select, Dropdown } from 'semantic-ui-react'
+import { Form, Input, Button, Dropdown, Checkbox } from 'semantic-ui-react'
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css"
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
   { key: 'f', text: 'Female', value: 'female' },
   { key: 'o', text: 'Other', value: 'other' },
-  ]
+]
 
 const eventOptions = [
   { key: 'nf', value: 'nf', text: 'Nightfall'},
@@ -16,41 +18,37 @@ const eventOptions = [
   
 ]
 
+
+
 class EventForm extends Component {
+  
   state = {
     event: '',
-    date: '',
-    time: '',
+    dateTime: new Date(),
     helper: false,
     description: '',
   }
 
   onFormChange = (e, { name, value }) => {
-    this.setState({ [name]: value})
+      this.setState({ [name]: value })
   }
-
-  handleSubmit = () => {
-    //
-  }
-
   
+  handleDateChange = date => {
+    this.setState({ dateTime: date })
+  }
+
+  handleToggle = () => {
+    this.setState({ helper: !this.state.helper })
+  }
 
   render() {
+    
+
     return (
       <>
       <br />
        <Form onSubmit={(e) => this.props.addNewEvent(this.state)}>
         <Form.Group widths='equal'>
-          <Form.Field>
-            <label>Middle name</label>
-            <Input fluid placeholder='Middle name' />
-          </Form.Field>
-          <Form.Field
-            control={Select}
-            label='Gender'
-            options={options}
-            placeholder='Gender'
-          />
           <Form.Field
             name="event"
             label='Select Event'
@@ -62,10 +60,31 @@ class EventForm extends Component {
             onChange={this.onFormChange}
           />
           <Form.Field
+            name="description"
+            value={this.state.description}
             control={Input}
             label='Event Notes'
             placeholder='Flawless run etc'
+            onChange={this.onFormChange}
           />
+        </Form.Group>
+        <Form.Group inline>
+          <label>When</label>
+          <Form.Field
+            control={DatePicker}
+            // label="When"
+            selected={this.state.dateTime}
+            onChange={this.handleDateChange}
+            showTimeSelect
+            dateFormat="Pp"
+          />
+          <label>Helper needed</label>
+          <Checkbox 
+            toggle
+            name="helper"
+            onChange={this.handleToggle}
+          />
+          <Button type='submit'>Submit</Button>
         </Form.Group>
       </Form>
       </>

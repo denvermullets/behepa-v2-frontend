@@ -16,9 +16,8 @@ class ClanEvent extends Component {
 
     addNewEvent = (eventInfo) => {
         // get user local timezone
-        // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-        let localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-        let eventTime = moment.tz(`${eventInfo.date} ${eventInfo.time}`, localTimeZone)
+        // let localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+        // let eventTime = moment.tz(`${eventInfo.date} ${eventInfo.time}`, localTimeZone)
 
 
         fetch('http://localhost:3000/events', {
@@ -28,8 +27,8 @@ class ClanEvent extends Component {
                 description: eventInfo.description,
                 activity: eventInfo.event,
                 need_helper: eventInfo.helper,
-                event_day: eventInfo.date,
-                event_time: eventTime.format()
+                // event_time: eventTime.format()
+                event_time: eventInfo.dateTime
             }),
             headers: { "Content-type": "application/json; charset=UTF-8" }})
                 .then(response => response.json())
