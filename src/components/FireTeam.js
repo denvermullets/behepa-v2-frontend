@@ -21,6 +21,8 @@ class FireTeam extends Component {
 
   getPlayerAvatar = () => {
     fetch(`https://www.bungie.net/Platform//User/GetBungieNetUserById/${this.state.player.bungie_id}/`)
+      .then(response => response.json())
+      .then(newAvatar => this.setState({ avatar: newAvatar.Response.profilePicturePath}))
   }
 
   render() {
