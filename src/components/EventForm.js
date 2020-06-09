@@ -4,13 +4,16 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
 const eventOptions = [
-  { key: 'nf', value: 'nf', text: 'Nightfall'},
-  { key: 'gos', value: 'gos', text: 'Garden of Salvation'},
-  { key: 'lw', value: 'lw', text: 'Last Wish'},
   { key: 'levi', value: 'levi', text: 'Leviathan'},
+  { key: 'eow', value: 'eow', text: 'Leviathan, Eater of Worlds'},
+  { key: 'sos', value: 'sos', text: 'Leviathan, Spire of Stars'},
+  { key: 'lw', value: 'lw', text: 'Last Wish'},
   { key: 'sotp', value: 'sotp', text: 'Scourge of the Past'},
-  
+  { key: 'cos', value: 'cos', text: 'Crown of Sorrow'},
+  { key: 'gos', value: 'gos', text: 'Garden of Salvation'},
+  { key: 'nf', value: 'nf', text: 'Nightfall'},
 ]
+
 
 class EventForm extends Component {
   
