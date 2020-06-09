@@ -2,33 +2,39 @@ import React, { Component } from 'react';
 import { Image, List } from 'semantic-ui-react'
 
 class FireTeam extends Component {
+
+  state = {
+    player: '',
+    avatar: '',
+  }
+
+  componentDidMount() {
+    this.loadPlayerDetails()
+    this.getPlayerAvatar()
+  }
+  
+  loadPlayerDetails = () => {
+    fetch(`http://localhost:3000/users/${this.props.guardian.user_id}`)
+      .then(response => response.json())
+      .then(player => this.setState({ player: player}))
+  }
+
+  getPlayerAvatar = () => {
+    fetch(`https://www.bungie.net/Platform//User/GetBungieNetUserById/${this.state.player.bungie_id}/`)
+  }
+
   render() {
     return (
-      <div>
-        <List horizontal>
+
+        
           <List.Item>
-            <Image avatar src='/images/avatar/small/tom.jpg' />
+            <Image avatar src={`https://www.bungie.net${this.state.player.avatar}`} />
             <List.Content>
-              <List.Header>denvermullets</List.Header>
-              #123487373
+              <List.Header> {this.state.player.display_name} </List.Header>
+              {/* {this.state.player.membership_id} */}
             </List.Content>
           </List.Item>
-          <List.Item>
-            <Image avatar src='/images/avatar/small/christian.jpg' />
-            <List.Content>
-              <List.Header>McMew</List.Header>
-              #1239847478
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <Image avatar src='/images/avatar/small/matt.jpg' />
-            <List.Content>
-              <List.Header>Kwaako</List.Header>
-              #1237848758
-            </List.Content>
-          </List.Item>
-        </List>
-      </div>
+          
     );
   }
 }

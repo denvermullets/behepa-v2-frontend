@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as moment from "moment" 
-import { Segment, Header, Divider, Button } from 'semantic-ui-react'
+import { Segment, Header, Divider, Button, List } from 'semantic-ui-react'
 import FireTeam from './FireTeam';
 
 const destinyEvents = {
@@ -68,11 +68,15 @@ class SegmentEvent extends Component {
           </Header>
           <Divider />
             {description}
-            <br /><br />
-            
-          <FireTeam 
-            fireTeam={this.state.fireTeam}
-          />
+            <br /><br /> 
+          
+          <List horizontal verticalAlign='middle'>
+            {this.state.fireTeam.map(guardian => <FireTeam 
+              key={guardian.id}
+              guardian={guardian}
+            />)}
+          </List>
+
 
         </Segment>
 
