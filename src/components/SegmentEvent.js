@@ -32,8 +32,6 @@ class SegmentEvent extends Component {
       .then(fireTeam => this.setState({ fireTeam }))
   }
 
-
-
   joinFireTeam = (id, isAlternate) => {
     fetch('http://localhost:3000/user_events', {
       method: 'POST',
@@ -59,7 +57,6 @@ class SegmentEvent extends Component {
     }
   }
 
-
   render() {
     const { activity, description, event_time, helper, id } = this.props.eventDetails
 
@@ -83,7 +80,7 @@ class SegmentEvent extends Component {
           </Header>
           <Divider />
             {description}
-          <Header as='h4' color='green'>Fireteam:</Header>
+          {this.state.fireTeam.length > 0 ? <Header as='h4' color='green'>Fireteam:</Header> : null }
           <List horizontal verticalAlign='middle'>
             {this.state.fireTeam.map(guardian => <FireTeam 
               key={guardian.id}
