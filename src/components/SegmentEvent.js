@@ -30,6 +30,8 @@ class SegmentEvent extends Component {
       .then(fireTeam => this.setState({ fireTeam }))
   }
 
+
+
   joinFireTeam = (id) => {
     fetch('http://localhost:3000/user_events', {
       method: 'POST',

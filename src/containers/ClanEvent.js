@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import EventForm from '../components/EventForm';
 import EventList from '../components/EventList';
-import * as moment from "moment-timezone" 
 
 
 class ClanEvent extends Component {
