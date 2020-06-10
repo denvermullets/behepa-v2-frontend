@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as moment from "moment" 
 import { Segment, Header, Divider, Button, List } from 'semantic-ui-react'
 import FireTeam from './FireTeam';
+import Alternate from './Alternate'
 
 const destinyEvents = {
   levi: 'Leviathan',
@@ -18,6 +19,7 @@ class SegmentEvent extends Component {
 
   state = {
     fireTeam: [],
+    alternate: [],
   }
 
   componentDidMount() {
@@ -32,24 +34,35 @@ class SegmentEvent extends Component {
 
 
 
-  joinFireTeam = (id) => {
+  joinFireTeam = (id, isAlternate) => {
     fetch('http://localhost:3000/user_events', {
       method: 'POST',
       body: JSON.stringify({
         user_id: 1,
         event_id: id,
-        joined: 'joined'
+        alternate: isAlternate
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
-      .then(response => response.json())
-      .then(fireTeam => this.setState({ fireTeam: [...this.state.fireTeam, fireTeam]}))
+      .then(response => response.json())  
+      .then(newGuardian => this.addToTeam(newGuardian, isAlternate))
+      // .then(fireTeam => this.setState({ fireTeam: [...this.state.fireTeam, fireTeam]}))
   }
+
+  addToTeam = (newGuardian, alternate) => {
+    if (alternate) {
+      this.setState({ alternate: [...this.state.alternate, newGuardian]})
+    } else {
+      this.setState({ fireTeam: [...this.state.fireTeam, newGuardian]})
+    }
+  }
+
 
   render() {
     const { activity, description, event_time, helper, id } = this.props.eventDetails
+
     return (
       <div>
         <Segment 
@@ -60,8 +73,8 @@ class SegmentEvent extends Component {
           <Header as='h3' color='teal'>
             {destinyEvents[activity]} 
             <Button.Group floated='right'>
-              <Button onClick={(e) => this.joinFireTeam(id)}>Join</Button>
-              <Button>Alternate</Button>
+              <Button onClick={(e) => this.joinFireTeam(id, false)}>Join</Button>
+              <Button onClick={(e) => this.joinFireTeam(id, true)}>Alternate</Button>
               <Button>Leave</Button>
             </Button.Group>
             <Header.Subheader>
@@ -70,16 +83,15 @@ class SegmentEvent extends Component {
           </Header>
           <Divider />
             {description}
-            <br /><br /> 
-          
+          <Header as='h4' color='green'>Fireteam:</Header>
           <List horizontal verticalAlign='middle'>
             {this.state.fireTeam.map(guardian => <FireTeam 
               key={guardian.id}
               guardian={guardian}
             />)}
           </List>
-
-
+          {this.state.alternate.length > 0 ? 
+          <Alternate alternate={this.state.alternate} /> : null }
         </Segment>
 
       </div>

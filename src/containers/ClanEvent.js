@@ -17,8 +17,6 @@ class ClanEvent extends Component {
         // get user local timezone
         // let localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         // let eventTime = moment.tz(`${eventInfo.date} ${eventInfo.time}`, localTimeZone)
-
-
         fetch('http://localhost:3000/events', {
             method: 'POST',
             body: JSON.stringify({
@@ -41,13 +39,15 @@ class ClanEvent extends Component {
     }
 
     render() {
+        // sort by event_time - earliest first
+        const sortedState = this.state.allEvents.sort((a, b) => a.event_time > b.event_time ? 1 : -1 )
         return (
             <>
                 <EventForm 
                     addNewEvent={this.addNewEvent}
                 />
                 <EventList
-                    allEvents={this.state.allEvents}
+                    allEvents={sortedState}
                 />
             </>
         );
