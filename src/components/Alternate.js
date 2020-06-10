@@ -6,7 +6,7 @@ class Alternate extends Component {
   render() {
     return (
       <>
-      <Header as='h4' color='orange'>Fireteam:</Header>
+      <Header as='h4' color='orange'>Alternate:</Header>
           <List horizontal verticalAlign='middle'>
             {this.props.alternate.map(guardian => <FireTeam 
               key={guardian.id}
