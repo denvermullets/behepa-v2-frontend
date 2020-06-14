@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as moment from "moment" 
-import { Segment, Header, Divider, Button, List } from 'semantic-ui-react'
+import { Segment, Header, Divider, Button, List, Icon } from 'semantic-ui-react'
 import FireTeam from './FireTeam';
 import Alternate from './Alternate'
 
@@ -66,7 +66,7 @@ class SegmentEvent extends Component {
           clearing
         >
           <Header as='h3' color='teal'>
-            {destinyEvents[activity]} 
+            {destinyEvents[activity]}
             <Button.Group floated='right'>
               <Button onClick={(e) => this.joinFireTeam(id, false)}>Join</Button>
               <Button onClick={(e) => this.joinFireTeam(id, true)}>Alternate</Button>
