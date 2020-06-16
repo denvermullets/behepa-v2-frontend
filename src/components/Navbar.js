@@ -41,14 +41,14 @@ class Navbar extends Component {
             onClick={this.handleItemClick}
             as={Link} to="/leaderboards"
           />
-          {/* <Menu.Menu position='right'>
+          <Menu.Menu position='right'>
             <Menu.Item
-              as={NavLink} to="/roster"
-              name='logout'
-              active={activeItem === 'logout'}
+              as={Link} to='/profile'
+              name='profile'
+              active={activeItem === 'profile'}
               onClick={this.handleItemClick}
             />
-          </Menu.Menu> */}
+          </Menu.Menu>
         </Menu>
       </div>
     );

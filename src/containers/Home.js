@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import SearchPlayer from '../components/SearchPlayer';
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        Hi and welcome to my homepage
-      </div>
+      <SearchPlayer />
     );
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import EventForm from '../components/EventForm';
 import EventList from '../components/EventList';
 
-
 class ClanEvent extends Component {
 
     state = {
@@ -24,7 +23,6 @@ class ClanEvent extends Component {
                 description: eventInfo.description,
                 activity: eventInfo.event,
                 need_helper: eventInfo.helper,
-                // event_time: eventTime.format()
                 event_time: eventInfo.dateTime
             }),
             headers: { "Content-type": "application/json; charset=UTF-8" }})
@@ -41,6 +39,7 @@ class ClanEvent extends Component {
     render() {
         // sort by event_time - earliest first
         const sortedState = this.state.allEvents.sort((a, b) => a.event_time > b.event_time ? 1 : -1 )
+        
         return (
             <>
                 <EventForm 
