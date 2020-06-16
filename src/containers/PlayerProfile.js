@@ -4,8 +4,6 @@ import queryString, { stringify } from "query-string";
 
 const auth_token = queryString.parse(window.location.search) // puts query params into object // auth_token.code //
 const AUTH_URL = `https://www.bungie.net/en/oauth/authorize?client_id=${process.env.REACT_APP_BUNGIE_OAUTH_ID}&response_type=code`
-// const AUTH_HEADER = "Basic cN-UgFeUm02gPOaiQWFhJPlhZNij1p5EKVHhP-oJulA"
-// const AUTH_HEADER = "Basic MzMwMTg6V0pIZzFlWE43Z2EtQ1ZDQ001Tm5oZUVBTXg4TVU0cmZXc2o3c0Y1TG9Odw==";
 const AUTH_HEADER = "Basic MjkyNzA6Y04tVWdGZVVtMDJnUE9haVFXRmhKUGxoWk5pajFwNUVLVkhoUC1vSnVsQQ=="
 
 const PlayerProfile = () => {
