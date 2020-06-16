@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'semantic-ui-react'
-import queryString, { stringify } from "query-string";
+import queryString from "query-string";
 
 const auth_token = queryString.parse(window.location.search) // puts query params into object // auth_token.code //
 const AUTH_URL = `https://www.bungie.net/en/oauth/authorize?client_id=${process.env.REACT_APP_BUNGIE_OAUTH_ID}&response_type=code`
-const AUTH_HEADER = "Basic MjkyNzA6Y04tVWdGZVVtMDJnUE9haVFXRmhKUGxoWk5pajFwNUVLVkhoUC1vSnVsQQ=="
+const AUTH_HEADER = `Basic ${process.env.REACT_APP_BUNGIE_SAUCE}`
 
 const PlayerProfile = () => {
   
