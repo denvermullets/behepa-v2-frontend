@@ -8,6 +8,7 @@ import ClanEvent from './containers/ClanEvent';
 import ClanRoster from './containers/ClanRoster';
 import Leaderboard from './containers/Leaderboard';
 import Home from './containers/Home';
+import PlayerProfile from './containers/PlayerProfile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/roster" component={ClanRoster}/> 
         <Route path="/events" component={ClanEvent}/>
         <Route path="/leaderboards" component={Leaderboard}/>
+        <Route path="/profile" component={PlayerProfile}/>
         {/* <Route path="/help" render={(routerProps) => <Help urgency={5} {...routerProps}/>}/> */}
         <Route path="/" component={Home}/>
       </Switch>

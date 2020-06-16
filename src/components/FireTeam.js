@@ -44,10 +44,16 @@ let requestOptions = {
 
   return (
        <List.Item>
-         {urlLoaded ? <Image avatar src={`https://bungie.net${avatarUrl}`} /> : null }
+         {urlLoaded
+            ? <Image avatar src={`https://bungie.net${avatarUrl}`} />
+            : null }
        <List.Content>
          {/* since async, let's check if the value exists, display nothing if fetch isn't done yet */}
-         <List.Header>{player ? player.display_name : "" }</List.Header>
+        <List.Header>
+           {player
+              ? player.display_name 
+              : "" }
+        </List.Header>
          {/* {this.state.player.membership_id}  DISPLAY STEAM ID */}
          #123456789
        </List.Content>

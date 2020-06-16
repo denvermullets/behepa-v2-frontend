@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import * as moment from "moment" 
 import { Header, Image, Table } from 'semantic-ui-react'
 
+
 class Event extends Component {
+    
     render() {
+
         const {event_time, description, activity, helper } = this.props.eventDetails
+        
         return (
             <>
                 <Table.Row>
