@@ -103,7 +103,7 @@ const PlayerProfile = () => {
   
   return (
     <>
-      <Button onClick={() => window.location = AUTH_URL }>Login w/Bungie</Button>
+      {/* <Button onClick={() => window.location = AUTH_URL }>Login w/Bungie</Button> */}
     </>
   );
 }
