@@ -4,6 +4,7 @@ import { Segment, Header, Divider, Button, List, Icon } from 'semantic-ui-react'
 import FireTeam from './FireTeam';
 import Alternate from './Alternate'
 
+// events are about to be removed with d2 expansion beyond light - update list
 const destinyEvents = {
   levi: 'Leviathan',
   eow: 'Leviathan, Eater of Worlds',
