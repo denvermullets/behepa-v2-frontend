@@ -1,58 +1,61 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
-
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import { Menu } from "semantic-ui-react"
 
 class Navbar extends Component {
-  state = { 
-    activeItem: 'home'
+  state = {
+    activeItem: "home",
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-
     const { activeItem } = this.state
-    
+
     return (
       <div>
         <Menu pointing secondary>
           <Menu.Item
-            as={Link} to="/"
-            name='home'
-            active={activeItem === 'home'}
+            as={Link}
+            to="/"
+            name="home"
+            active={activeItem === "home"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            as={Link} to="/events"
-            name='events'
-            active={activeItem === 'events'}
+            as={Link}
+            to="/events"
+            name="events"
+            active={activeItem === "events"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='roster'
-            active={activeItem === 'roster'}
+            name="roster"
+            active={activeItem === "roster"}
             onClick={this.handleItemClick}
-            as={Link} to="/roster"
+            as={Link}
+            to="/roster"
           />
           <Menu.Item
-            name='leaderboards'
-            active={activeItem === 'leaderboards'}
+            name="leaderboards"
+            active={activeItem === "leaderboards"}
             onClick={this.handleItemClick}
-            as={Link} to="/leaderboards"
+            as={Link}
+            to="/leaderboards"
           />
-          <Menu.Menu position='right'>
+          <Menu.Menu position="right">
             <Menu.Item
-              as={Link} to='/profile'
-              name='profile'
-              active={activeItem === 'profile'}
+              as={Link}
+              to="/profile"
+              name="profile"
+              active={activeItem === "profile"}
               onClick={this.handleItemClick}
             />
           </Menu.Menu>
         </Menu>
       </div>
-    );
+    )
   }
 }
 
-export default Navbar;
+export default Navbar
