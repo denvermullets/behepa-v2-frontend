@@ -35,13 +35,17 @@ class EventForm extends Component {
   }
 
   onSubmit = () => {
-    this.props.addNewEvent(this.state)
-    this.setState({
-      event: "",
-      dateTime: new Date(),
-      helper: false,
-      description: "",
-    })
+    if (!this.state.event) {
+      alert("Event can't be blank")
+    } else {
+      this.props.addNewEvent(this.state)
+      this.setState({
+        event: "",
+        dateTime: new Date(),
+        helper: false,
+        description: "",
+      })
+    }
   }
 
   render() {
